@@ -30,10 +30,23 @@ function genPassword(value){
     return password;
 }
 
+// Generate password with uppercase characters
 function genPasswordWithUppercase(value){
     let password = "";
     let passwordLength = value;
     const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    for(let i = 0; i < passwordLength; i++){
+        passwordChars = Math.floor(Math.random() * characters.length);
+        password += characters[passwordChars];
+    }
+}
+
+// Generatre password with symbols 
+function genPasswordWithSymbols(value){
+    let password = "";
+    let passwordLength = value;
+    const characters = "'abcdefghijklmnopqrstuvwxyz!@#$%^&*()<>?[]=-+_/,?:'|";
 
     for(let i = 0; i < passwordLength; i++){
         passwordChars = Math.floor(Math.random() * characters.length);
