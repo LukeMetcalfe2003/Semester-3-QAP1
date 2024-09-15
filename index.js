@@ -37,9 +37,11 @@ function genPasswordWithUppercase(value){
     const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     for(let i = 0; i < passwordLength; i++){
-        passwordChars = Math.floor(Math.random() * characters.length);
+       const passwordChars = Math.floor(Math.random() * characters.length);
         password += characters[passwordChars];
     }
+
+    return password;
 }
 
 // Generatre password with symbols 
@@ -49,9 +51,11 @@ function genPasswordWithSymbols(value){
     const characters = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()<>?[]=-+_/,?:'|";
 
     for(let i = 0; i < passwordLength; i++){
-        passwordChars = Math.floor(Math.random() * characters.length);
+        const passwordChars = Math.floor(Math.random() * characters.length);
         password += characters[passwordChars];
     }
+
+    return password;
 }
 
 // Generate password with numbers
@@ -61,10 +65,24 @@ function genPasswordWithNums(value){
     const characters = "abcdefghijklmnopqrstuvwxyz1234567890";
 
     for(let i = 0; i < passwordLength; i++){
-        passwordChars = Math.floor(Math.random() * characters.length);
+        const passwordChars = Math.floor(Math.random() * characters.length);
         password += characters[passwordChars];
     }
+
+    return password;
 }
 
+// Generate password that includes everything
+function genPasswordWithEveything(value){
+    let password = "";
+    let passwordLength = value;
+    const characters = "ABCDEFGHIJKLMONPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()<>?[]=-+_/,?:'|";
 
+    for(let i = 0; i < passwordLength; i++){
+        const passwordChars = Math.floor(Math.random() * characters.length);
+        password += characters[passwordChars];
+    }
+
+    return password;
+}
 
