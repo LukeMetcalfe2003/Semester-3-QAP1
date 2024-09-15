@@ -30,3 +30,16 @@ function genPassword(value){
     return password;
 }
 
+function genPasswordWithUppercase(value){
+    let password = "";
+    let passwordLength = value;
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    for(let i = 0; i < passwordLength; i++){
+        passwordChars = Math.floor(Math.random() * characters.length);
+        password += characters[passwordChars];
+    }
+}
+
+
+
