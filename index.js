@@ -99,13 +99,13 @@ if(arguments.includes("--help")){
 if(arguments.length = 0){
     blankArg();
 } else if (arguments.includes("--password") && customizeArg.includes("a")){
-    console.log("Password:" + genPasswordWithEveything(length))
+    console.log("Password:" + " " + genPasswordWithEveything(length))
 } else if (arguments.includes("--password") && customizeArg.includes("n")){
-    console.log("Password:" + genPasswordWithNums(length))
+    console.log("Password:" + " " + genPasswordWithNums(length))
 } else if (arguments.includes("--password") && customizeArg.includes("c")){
-    console.log("Password" + genPasswordWithUppercase(length))
+    console.log("Password" + " " + genPasswordWithUppercase(length))
 } else if (arguments.includes("--password") && customizeArg.includes("s")){
-    console.log("Password:" + genPasswordWithSymbols(length))
+    console.log("Password:" + " " + genPasswordWithSymbols(length))
 } else {
-    console.log("Password:" + genPassword(length))
+    console.log("Password:" + " " + genPassword(length))
 };
