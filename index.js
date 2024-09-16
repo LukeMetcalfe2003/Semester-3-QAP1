@@ -90,13 +90,14 @@ function genPasswordWithEveything(value){
 if(arguments.includes("--help")){
     console.log(`
         Usage:
+        begin all the folowing with npx password-generator
         --help  Displays the usage menu
         --password  Generates a password with lower case characters
         --password (length - should be an integer ex. 6) (choose what characters (a - all, c - capital, n - numbers, s - exsymbols ex. a)`)
 }
 
 // possible arguments
-if(arguments.length = 0){
+if(arguments.length === 0){
     blankArg();
 } else if (arguments.includes("--password") && customizeArg.includes("a")){
     console.log("Password:" + " " + genPasswordWithEveything(length))
