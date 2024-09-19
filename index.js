@@ -4,25 +4,24 @@ const process = require('node:process');
 
 const arguments = process.argv.slice(2);
 
-// Deals with the length flag 8 is default if length is not specified.
-const lengthArg = process.argv[3];
+// Deals with the length flag; 8 is default if length is not specified.
+const lengthArg = arguments[0];
 const length = parseInt(lengthArg, 10) || 8;
 
 // Customize argument
-const customizeArg = process.argv[4];
+const customizeArg = arguments[1] || "";
 
-// handle errors if no argument is eneterd
-function blankArg(){
+// Handle errors if no argument is entered
+function blankArg() {
     console.log("An Argument must be entered... '--help' for more info");
 }
 
-// password generator 
-function genPassword(value){
+// Password generator 
+function genPassword(value) {
     let password = "";
-    let passwordLength = value;
     const characters = "abcdefghijklmnopqrstuvwxyz";
 
-    for(let i = 0; i < passwordLength; i++){
+    for (let i = 0; i < value; i++) {
         const passwordChars = Math.floor(Math.random() * characters.length);
         password += characters[passwordChars];
     }
@@ -31,26 +30,24 @@ function genPassword(value){
 }
 
 // Generate password with uppercase characters
-function genPasswordWithUppercase(value){
+function genPasswordWithUppercase(value) {
     let password = "";
-    let passwordLength = value;
-    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
-    for(let i = 0; i < passwordLength; i++){
-       const passwordChars = Math.floor(Math.random() * characters.length);
+    for (let i = 0; i < value; i++) {
+        const passwordChars = Math.floor(Math.random() * characters.length);
         password += characters[passwordChars];
     }
 
     return password;
 }
 
-// Generatre password with symbols 
-function genPasswordWithSymbols(value){
+// Generate password with symbols 
+function genPasswordWithSymbols(value) {
     let password = "";
-    let passwordLength = value;
     const characters = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()<>?[]=-+_/,?:'|";
 
-    for(let i = 0; i < passwordLength; i++){
+    for (let i = 0; i < value; i++) {
         const passwordChars = Math.floor(Math.random() * characters.length);
         password += characters[passwordChars];
     }
@@ -59,12 +56,11 @@ function genPasswordWithSymbols(value){
 }
 
 // Generate password with numbers
-function genPasswordWithNums(value){
+function genPasswordWithNums(value) {
     let password = "";
-    let passwordLength = value;
     const characters = "abcdefghijklmnopqrstuvwxyz1234567890";
 
-    for(let i = 0; i < passwordLength; i++){
+    for (let i = 0; i < value; i++) {
         const passwordChars = Math.floor(Math.random() * characters.length);
         password += characters[passwordChars];
     }
@@ -73,12 +69,11 @@ function genPasswordWithNums(value){
 }
 
 // Generate password that includes everything
-function genPasswordWithEveything(value){
+function genPasswordWithEverything(value) {
     let password = "";
-    let passwordLength = value;
-    const characters = "ABCDEFGHIJKLMONPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()<>?[]=-+_/,?:'|";
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()<>?[]=-+_/,?:'|";
 
-    for(let i = 0; i < passwordLength; i++){
+    for (let i = 0; i < value; i++) {
         const passwordChars = Math.floor(Math.random() * characters.length);
         password += characters[passwordChars];
     }
@@ -86,27 +81,27 @@ function genPasswordWithEveything(value){
     return password;
 }
 
-// usage menu
-if(arguments.includes("--help")){
+// Usage menu
+if (arguments.includes("--help")) {
     console.log(`
         Usage:
-        begin all the folowing with npx password-generator
+        Begin all the following with npx password-generator
         --help  Displays the usage menu
-        --password  Generates a password with lower case characters
-        --password (length - should be an integer ex. 6) (choose what characters (a - all, c - capital, n - numbers, s - exsymbols ex. a)`)
+        --password (length - should be an integer ex. 6) (choose what characters (a - all, c - capital, n - numbers, s - symbols))
+    `);
 }
 
-// possible arguments
-if(arguments.length === 0){
+// Possible arguments
+if (arguments.length === 0) {
     blankArg();
-} else if (arguments.includes("--password") && customizeArg.includes("a")){
-    console.log("Password:" + " " + genPasswordWithEveything(length))
-} else if (arguments.includes("--password") && customizeArg.includes("n")){
-    console.log("Password:" + " " + genPasswordWithNums(length))
-} else if (arguments.includes("--password") && customizeArg.includes("c")){
-    console.log("Password" + " " + genPasswordWithUppercase(length))
-} else if (arguments.includes("--password") && customizeArg.includes("s")){
-    console.log("Password:" + " " + genPasswordWithSymbols(length))
+} else if (customizeArg.includes("a")) {
+    console.log("Password: " + genPasswordWithEverything(length));
+} else if (customizeArg.includes("n")) {
+    console.log("Password: " + genPasswordWithNums(length));
+} else if (customizeArg.includes("c")) {
+    console.log("Password: " + genPasswordWithUppercase(length));
+} else if (customizeArg.includes("s")) {
+    console.log("Password: " + genPasswordWithSymbols(length));
 } else {
-    console.log("Password:" + " " + genPassword(length))
-};
+    console.log("Password: " + genPassword(length));
+}
